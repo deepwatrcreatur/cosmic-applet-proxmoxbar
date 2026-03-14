@@ -30,6 +30,7 @@
 
           nativeBuildInputs = with pkgs; [
             pkg-config
+            makeWrapper
           ];
 
           buildInputs = with pkgs; [
@@ -41,6 +42,14 @@
           postInstall = ''
             mkdir -p $out/share/applications
             cp data/com.deepwatrcreatur.CosmicAppletProxmoxbar.desktop $out/share/applications/
+
+            # Wrap binary with runtime library paths for Wayland
+            wrapProgram $out/bin/cosmic-applet-proxmoxbar \
+              --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [
+                pkgs.wayland
+                pkgs.libxkbcommon
+                pkgs.fontconfig
+              ]}
           '';
         };
 
