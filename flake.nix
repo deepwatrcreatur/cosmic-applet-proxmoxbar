@@ -22,10 +22,11 @@
           pname = "cosmic-applet-proxmoxbar";
           version = "0.1.0";
           src = ./.;
-          cargoLock = {
-            lockFile = ./Cargo.lock;
-            allowBuiltinFetchGit = true;
-          };
+
+          # Use fetchCargoVendor instead of allowBuiltinFetchGit to avoid
+          # SSH key issues when fetching git dependencies (works for all users)
+          useFetchCargoVendor = true;
+          cargoHash = "sha256-jV9V4BWkjWhkaAzi8P6ZSgidDkRCAqfLr9A/cYXl1kI=";
 
           nativeBuildInputs = with pkgs; [
             pkg-config
