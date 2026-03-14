@@ -235,9 +235,11 @@ impl cosmic::Application for ProxmoxApplet {
         .spacing(6)
         .align_y(Alignment::Center);
 
+        // Hover popup is handled by COSMIC via X-CosmicHoverPopup=true in desktop file
+        // Click toggles the popup for accessibility
         button::custom(content)
             .padding([0, self.core.applet.suggested_padding(true).0])
-            .on_press_down(Message::TogglePopup)
+            .on_press(Message::TogglePopup)
             .class(cosmic::theme::Button::AppletIcon)
             .into()
     }
