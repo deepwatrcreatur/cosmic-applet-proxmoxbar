@@ -1,0 +1,25 @@
+[package]
+name = "cosmic-applet-proxmoxbar"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "COSMIC applet for monitoring Proxmox cluster status"
+repository = "https://github.com/deepwatrcreatur/cosmic-applet-proxmoxbar"
+
+[dependencies]
+anyhow = "1.0"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+libcosmic = { git = "https://github.com/pop-os/libcosmic", default-features = false, features = [
+  "applet",
+  "tokio",
+  "wayland",
+  "desktop-systemd-scope",
+  "winit",
+] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["rt", "time"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-log = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

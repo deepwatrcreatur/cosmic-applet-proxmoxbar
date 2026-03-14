@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=ProxmoxBar
+Type=Application
+Exec=cosmic-applet-proxmoxbar
+Terminal=false
+Categories=COSMIC;
+Keywords=COSMIC;Proxmox;Virtualization;
+Icon=network-workgroup-symbolic
+StartupNotify=true
+NoDisplay=true
+X-CosmicApplet=true
+X-CosmicShrinkable=true
+X-CosmicHoverPopup=Auto
+X-OverflowPriority=10
